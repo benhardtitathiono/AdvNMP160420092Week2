@@ -11,33 +11,25 @@ import androidx.navigation.Navigation
 
 /**
  * A simple [Fragment] subclass.
- * Use the [GameFragment.newInstance] factory method to
+ * Use the [ResultFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class GameFragment : Fragment() {
+class ResultFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game, container, false)
+        return inflater.inflate(R.layout.fragment_result, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val txtTurn=view.findViewById<TextView>(R.id.txtTurn)
-        val txtNum1=view.findViewById<TextView>(R.id.txtNum1)
-        val txtNum2=view.findViewById<TextView>(R.id.txtNum2)
-        var num1=(0..99).random()
-        var num2=(0..99).random()
+        val txtScore=view.findViewById<TextView>(R.id.txtScore)
+        val btnExit=view.findViewById<Button>(R.id.btnBack)
 
-        arguments?.let{
-            val playerName=GameFragmentArgs.fromBundle(requireArguments()).playerName
-            txtTurn.text="$playerName's Turn"
-        }
-        val btnSubmit=view.findViewById<Button>(R.id.btnSubmit)
-        btnSubmit.setOnClickListener{
-            val action=GameFragmentDirections.actionResultFragment()
+        btnExit.setOnClickListener{
+            val action=ResultFragmentDirections.actionMainFragment()
             Navigation.findNavController(it).navigate(action)
         }
     }
