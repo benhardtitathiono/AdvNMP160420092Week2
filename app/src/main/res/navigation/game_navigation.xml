@@ -8,11 +8,12 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.ubaya160420092.adv160420092week2.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        android:label="Main Screen"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/actionGameFragment"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/gameFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -21,6 +22,10 @@
         tools:layout="@layout/fragment_game" >
         <action
             android:id="@+id/actionMainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:exitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="player_name"
+            app:argType="string" />
     </fragment>
 </navigation>
