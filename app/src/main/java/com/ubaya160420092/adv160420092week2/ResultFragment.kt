@@ -25,8 +25,14 @@ class ResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val txtScore=view.findViewById<TextView>(R.id.txtScore)
         val btnExit=view.findViewById<Button>(R.id.btnBack)
+
+        arguments?.let {
+            val score= ResultFragmentArgs.fromBundle(requireArguments()).score
+            txtScore.text="Your Score is $score"
+        }
 
         btnExit.setOnClickListener{
             val action=ResultFragmentDirections.actionMainFragment()

@@ -35,5 +35,8 @@
         <action
             android:id="@+id/actionMainFragment"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="score"
+            app:argType="integer" />
     </fragment>
 </navigation>
