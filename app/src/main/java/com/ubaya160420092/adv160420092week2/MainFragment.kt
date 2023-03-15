@@ -26,11 +26,19 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val btnStart=view.findViewById<Button>(R.id.btnStart)
         val txtname=view.findViewById<TextInputEditText>(R.id.txtAnswer)
+        val btnOption=view.findViewById<Button>(R.id.btnOption)
+
         btnStart.setOnClickListener{
             val playerName=txtname.text.toString()
             val action=MainFragmentDirections.actionGameFragment(playerName)
+            Navigation.findNavController(it).navigate(action)
+        }
+
+        btnOption.setOnClickListener{
+            val action=MainFragmentDirections.actionOptionFragment()
             Navigation.findNavController(it).navigate(action)
         }
     }
